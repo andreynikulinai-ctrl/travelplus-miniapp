@@ -1,0 +1,61 @@
+import express from 'express';
+import cors from 'cors';
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.post('/api/orders', async (req, res) => {
+  const { name, phone, email, items } = req.body;
+  const token = '8316300214:AAFUrqM3DBwjh4W2yPGqva97J3RF21hoegU';
+  const chatId = '290074312';
+  
+  const text = 'Заявка! Имя: ' + name + ', Телефон: ' + phone + ', Email: ' + email + ', Товаров: ' + items.length;
+  
+  await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text: text })
+  });
+  
+  res.json({ success: true });
+});
+
+app.listen(3001, () => console.log('Backend started on port 3001'));
+cat > server.js << 'ENDFILE'
+import express from 'express';
+import cors from 'cors';
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.post('/api/orders', async (req, res) => {
+  const { name, phone, email, company, comment, contactMethod, items } = req.body;
+  const token = '8316300214:AAFUrqM3DBwjh4W2yPGqva97J3RF21hoegU';
+  const chatId = '290074312';
+  
+  let text = 'Новая заявка!\n\n';
+  text += 'Имя: ' + name + '\n';
+  text += 'Телефон: ' + phone + '\n';
+  text += 'Email: ' + email + '\n';
+  if (company) text += 'Компания: ' + company + '\n';
+  text += 'Способ связи: ' + contactMethod + '\n\n';
+  text += 'Товары:\n';
+  items.forEach((item, i) => {
+    text += (i + 1) + '. ' + item.name + ' (' + item.packaging + ')\n';
+  });
+  if (comment) text += '\nКомментарий: ' + comment;
+  
+  await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    );
+  
+  res.json({ success: true });
+});
+
+app.listen(3001, () => console.log('Backend started on port 3001'));
+ENDFILE
+npm run dev
+
