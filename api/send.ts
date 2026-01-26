@@ -11,5 +11,11 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  
+  if (!token) {
+    return res.status(500).json({ error: "Missing TELEGRAM_BOT_TOKEN" });
+  }
+
   return res.status(200).json({ ok: true });
 }
