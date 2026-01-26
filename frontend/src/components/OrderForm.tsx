@@ -28,7 +28,7 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/api/orders', {
+      const response = await fetch('/api/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, items })
