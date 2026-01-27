@@ -7,8 +7,9 @@ interface OrderFormProps {
 }
 
 export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
-  const { items } = useSelectedStore()
-  
+  const { items, clearItems } = useSelectedStore()
+  const [isLoading, setIsLoading] = useState(false)
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -21,11 +22,13 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (!formData.agreedToPolicy) {
       alert('Необходимо согласие на обработку персональных данных')
       return
     }
+
+    setIsLoading(true)
 
     try {
       const response = await fetch('/api/send', {
@@ -35,16 +38,19 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
       })
 
       const data = await response.json()
-      
+
       if (data.success) {
+        clearItems()
         alert('Заявка отправлена! Менеджер свяжется с вами в ближайшее время.')
         onClose()
       } else {
-        alert('Ошибка при отправке заявки')
+        alert('Ошибка при отправке заявки. Попробуйте позже.')
       }
     } catch (error) {
       console.error('Error:', error)
-      alert('Ошибка при отправке заявки')
+      alert('Ошибка при отправке заявки. Проверьте соединение.')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -179,9 +185,10 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
             </button>
             <button
               type="submit"
-              className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition-colors"
+              disabled={isLoading}
+              className="flex-1 bg-blue-500 hover:bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed text-white font-medium py-2 px-4 rounded-md transition-colors"
             >
-              Отправить
+              {isLoading ? 'Отправка...' : 'Отправить'}
             </button>
           </div>
         </form>
