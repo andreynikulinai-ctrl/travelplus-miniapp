@@ -28,23 +28,41 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
     }
 
     try {
-      const response = await fetch('/api/send', {
+      // В разработке — запрос напрямую на бэкенд (127.0.0.1 часто надёжнее localhost)
+      const apiUrl = import.meta.env.DEV ? 'http://127.0.0.1:3001/api/send' : '/api/send'
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, items })
       })
 
-      const data = await response.json()
-      
+      const rawText = await response.text()
+      console.log('[форма] Ответ сервера:', response.status, rawText.slice(0, 300))
+
+      let data: { success?: boolean; error?: string }
+      try {
+        data = rawText ? JSON.parse(rawText) : {}
+      } catch {
+        const fallback = !response.ok
+          ? 'Сервер ответил с ошибкой (код ' + response.status + '). Проверьте, что бэкенд запущен: в папке backend выполните node server.js'
+          : 'Сервер вернул неверный ответ: ' + rawText.slice(0, 100)
+        throw new Error(fallback)
+      }
+
+      if (!response.ok) {
+        alert(data?.error || 'Ошибка сервера (код ' + response.status + ')')
+        return
+      }
       if (data.success) {
         alert('Заявка отправлена! Менеджер свяжется с вами в ближайшее время.')
         onClose()
       } else {
-        alert('Ошибка при отправке заявки')
+        alert(data?.error || 'Ошибка при отправке заявки')
       }
-    } catch (error) {
-      console.error('Error:', error)
-      alert('Ошибка при отправке заявки')
+    } catch (error: unknown) {
+      console.error('[форма] Ошибка:', error)
+      const msg = error instanceof Error ? error.message : String(error)
+      alert('Ошибка: ' + msg + '\n\nУбедитесь: 1) Бэкенд запущен (в папке backend: node server.js). 2) Открыт http://127.0.0.1:5173 (не файл с диска).')
     }
   }
 
