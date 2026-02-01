@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="travelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#D97158"/>
+      <stop offset="100%" style="stop-color:#c25a42"/>
+    </linearGradient>
+  </defs>
+  <!-- Иконка самолёта — Tangerine -->
+  <path d="M8 20c0-1.5.8-2.8 2-3.6L6 8h3l3 6 4-6h3l-5 8.5L22 20l-5 3.5L14 26v-3l-4-3V20z" fill="url(#travelGrad)"/>
+  <!-- Текст Travel+ — Gray (текст брендбука) -->
+  <text x="28" y="26" font-family="Golos Text, system-ui, sans-serif" font-size="20" font-weight="700" fill="#71716F">Travel+</text>
+</svg>

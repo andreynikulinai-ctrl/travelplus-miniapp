@@ -20,7 +20,7 @@ export const SelectedModal = ({ isOpen, onClose, onOpenForm }: SelectedModalProp
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col">
         <div className="p-4 border-b flex justify-between items-center">
-          <h2 className="text-xl font-bold">Выбранные товары</h2>
+          <h2 className="font-display text-xl font-bold text-brandGray">Выбранные товары</h2>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-2xl">
             ×
           </button>
@@ -39,6 +39,7 @@ export const SelectedModal = ({ isOpen, onClose, onOpenForm }: SelectedModalProp
                     src={item.images[0]}
                     alt={item.name}
                     className="w-16 h-16 object-cover rounded"
+                    onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
                   />
                   <div className="flex-1">
                     <h3 className="font-semibold text-sm">{item.name}</h3>
@@ -60,7 +61,7 @@ export const SelectedModal = ({ isOpen, onClose, onOpenForm }: SelectedModalProp
           <div className="p-4 border-t">
             <button 
               onClick={handleRequestQuote}
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-md"
+              className="w-full bg-tangerine hover:bg-tangerine-dark text-white font-bold py-3 rounded-lg transition-colors"
             >
               Запросить КП ({items.length} {items.length === 1 ? 'товар' : 'товара'})
             </button>

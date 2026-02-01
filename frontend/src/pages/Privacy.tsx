@@ -2,7 +2,7 @@ export const Privacy = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
-        <h1 className="text-2xl font-bold mb-4">
+        <h1 className="font-display text-2xl font-bold text-brandGray mb-4">
           Политика конфиденциальности
         </h1>
         

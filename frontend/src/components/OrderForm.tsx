@@ -73,7 +73,7 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
       <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-hidden flex flex-col">
         {/* Шапка */}
         <div className="p-4 border-b flex justify-between items-center">
-          <h2 className="text-xl font-bold">Запрос коммерческого предложения</h2>
+          <h2 className="font-display text-xl font-bold text-brandGray">Запрос коммерческого предложения</h2>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-2xl">
             ×
           </button>
@@ -92,7 +92,7 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-aluminium rounded-lg focus:outline-none focus:ring-2 focus:ring-tangerine focus:border-tangerine"
                 placeholder="Иван Иванов"
               />
             </div>
@@ -107,7 +107,7 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
                 required
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-aluminium rounded-lg focus:outline-none focus:ring-2 focus:ring-tangerine focus:border-tangerine"
                 placeholder="+7 999 123-45-67"
               />
             </div>
@@ -122,7 +122,7 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-aluminium rounded-lg focus:outline-none focus:ring-2 focus:ring-tangerine focus:border-tangerine"
                 placeholder="ivan@example.com"
               />
             </div>
@@ -136,8 +136,8 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
                 type="text"
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="ООО Рога и Копыта"
+                className="w-full px-3 py-2 border border-aluminium rounded-lg focus:outline-none focus:ring-2 focus:ring-tangerine focus:border-tangerine"
+                placeholder="ООО, ИП, физ лицо"
               />
             </div>
 
@@ -149,7 +149,7 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
               <select
                 value={formData.contactMethod}
                 onChange={(e) => setFormData({ ...formData, contactMethod: e.target.value as 'telegram' | 'email' | 'phone' })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-aluminium rounded-lg focus:outline-none focus:ring-2 focus:ring-tangerine focus:border-tangerine"
               >
                 <option value="telegram">Telegram</option>
                 <option value="email">Email</option>
@@ -166,7 +166,7 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
                 value={formData.comment}
                 onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-aluminium rounded-lg focus:outline-none focus:ring-2 focus:ring-tangerine focus:border-tangerine"
                 placeholder="Дополнительная информация..."
               />
             </div>
@@ -191,13 +191,13 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50"
+              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
             >
               Отмена
             </button>
             <button
               type="submit"
-              className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition-colors"
+              className="flex-1 bg-tangerine hover:bg-tangerine-dark text-white font-medium py-2 px-4 rounded-lg transition-colors"
             >
               Отправить
             </button>

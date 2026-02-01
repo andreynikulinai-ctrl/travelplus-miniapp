@@ -13,16 +13,17 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           src={product.images[0]}
           alt={product.name}
           className="w-full h-full object-cover"
+          onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
         />
       </div>
 
       {/* Контент */}
       <div className="p-4">
         {/* Название и описание */}
-        <h3 className="text-lg font-semibold text-gray-900 mb-1 line-clamp-2">
+        <h3 className="text-lg font-semibold text-brandGray mb-1 line-clamp-2">
           {product.name}
         </h3>
-        <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+        <p className="text-sm text-brandGray/80 mb-3 line-clamp-2">
           {product.description}
         </p>
 
@@ -34,18 +35,18 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         {/* Цена */}
         <div className="mb-4">
           {product.price !== null ? (
-            <span className="text-xl font-bold text-primary-600">
+            <span className="text-xl font-bold text-tangerine">
               {product.price} ₽
             </span>
           ) : (
-            <span className="text-lg font-medium text-gray-700">
+            <span className="text-lg font-medium text-brandGray">
               Цена по запросу
             </span>
           )}
         </div>
 
         {/* Кнопка */}
-        <button className="w-full bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 px-4 rounded-md transition-colors">
+        <button className="w-full bg-tangerine hover:bg-tangerine-dark text-white font-medium py-2 px-4 rounded-lg transition-colors">
           Подробнее
         </button>
       </div>

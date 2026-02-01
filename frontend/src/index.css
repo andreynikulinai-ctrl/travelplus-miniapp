@@ -1,8 +1,15 @@
+/* Брендбук: GOLOS — основной текст и детали; AKONY Bold — заголовки (подключить отдельно при наличии) */
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+@layer base {
+  body {
+    @apply font-sans text-brandGray antialiased bg-offWhite;
+  }
+  h1, h2, h3 {
+    @apply font-display font-bold;
+  }
 }
