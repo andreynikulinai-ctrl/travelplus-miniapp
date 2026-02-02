@@ -26,8 +26,9 @@
 | Подзаголовки, текст | **GOLOS**      | Regular    | Основной текст, подзаголовки (в т.ч. uppercase) |
 | Детали, подписи     | **GOLOS**      | Medium     | Детали 1, детали 2 |
 
-В проекте подключён **Golos Text** (Google Fonts): Regular 400, Medium 500, Bold 700.  
-**Akony** в Google Fonts нет — при наличии файлов (.woff2) его можно подключить отдельно для заголовков.
+В проекте подключены:
+- **Golos Text** (Google Fonts): Regular 400, Medium 500, Bold 700 — основной текст и детали.
+- **Akony Bold** — файл `public/fonts/akony-bold.otf`, класс `font-display` — заголовки (h1, h2, h3, «Трэвел+» в шапке и т.д.).
 
 ---
 

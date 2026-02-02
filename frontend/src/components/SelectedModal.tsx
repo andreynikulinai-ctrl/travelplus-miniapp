@@ -17,11 +17,11 @@ export const SelectedModal = ({ isOpen, onClose, onOpenForm }: SelectedModalProp
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 animate-fade-in">
+      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col shadow-xl animate-modal-in">
         <div className="p-4 border-b flex justify-between items-center">
           <h2 className="font-display text-xl font-bold text-brandGray">Выбранные товары</h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-2xl">
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-2xl transition-colors duration-150 p-1 rounded hover:bg-gray-100">
             ×
           </button>
         </div>
@@ -34,7 +34,7 @@ export const SelectedModal = ({ isOpen, onClose, onOpenForm }: SelectedModalProp
           ) : (
             <div className="space-y-3">
               {items.map((item) => (
-                <div key={item.id} className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
+                <div key={item.id} className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg transition-colors duration-150 hover:bg-aluminium/50">
                   <img
                     src={item.images[0]}
                     alt={item.name}
@@ -47,7 +47,7 @@ export const SelectedModal = ({ isOpen, onClose, onOpenForm }: SelectedModalProp
                   </div>
                   <button
                     onClick={() => removeItem(item.id)}
-                    className="text-red-500 hover:text-red-700"
+                    className="text-red-500 hover:text-red-700 transition-colors duration-150 p-1 rounded active:scale-95"
                   >
                     🗑️
                   </button>
@@ -61,7 +61,7 @@ export const SelectedModal = ({ isOpen, onClose, onOpenForm }: SelectedModalProp
           <div className="p-4 border-t">
             <button 
               onClick={handleRequestQuote}
-              className="w-full bg-tangerine hover:bg-tangerine-dark text-white font-bold py-3 rounded-lg transition-colors"
+              className="w-full bg-tangerine hover:bg-tangerine-dark text-white font-bold py-3 rounded-lg transition-all duration-200 active:scale-[0.98]"
             >
               Запросить КП ({items.length} {items.length === 1 ? 'товар' : 'товара'})
             </button>

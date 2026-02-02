@@ -4,6 +4,9 @@
   "functions": {
     "api/send.ts": {
       "includeFiles": "api/**"
+    },
+    "api/post-channel-message.ts": {
+      "includeFiles": "api/**"
     }
   },
   "headers": [

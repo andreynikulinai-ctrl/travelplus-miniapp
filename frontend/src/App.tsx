@@ -20,12 +20,12 @@ function App() {
         {/* Шапка: название бренда без логотипа */}
         <header className="bg-white shadow-sm sticky top-0 z-10 border-b border-aluminium">
           <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="/" className="font-display font-bold text-tangerine text-xl sm:text-2xl tracking-tight">
+            <a href="/" className="font-akony font-bold text-tangerine text-xl sm:text-2xl tracking-tight transition-opacity duration-200 hover:opacity-80">
               Трэвел+
             </a>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="relative bg-tangerine hover:bg-tangerine-dark text-white font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+              className="relative bg-tangerine hover:bg-tangerine-dark text-white font-medium px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 active:scale-95"
             >
               <span className="text-sm">Выбрано: {items.length}</span>
             </button>
@@ -37,7 +37,7 @@ function App() {
             Каталог
           </h2>
           <p className="text-center text-brandGray text-sm mb-6">
-            Оснащение гостиниц, отелей, хостелов, СПА
+            Оснащение гостиниц, отелей, СПА
           </p>
 
           {/* Фильтр по категориям */}
@@ -45,7 +45,7 @@ function App() {
             <div className="flex gap-2 pb-2">
               <button
                 onClick={() => setSelectedCategory('all')}
-                className={`px-4 py-2 rounded-full whitespace-nowrap font-medium transition-colors ${
+                className={`px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all duration-200 ${
                   selectedCategory === 'all'
                     ? 'bg-tangerine text-white'
                     : 'bg-aluminium text-brandGray hover:bg-gray-300'
@@ -57,7 +57,7 @@ function App() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`px-4 py-2 rounded-full whitespace-nowrap font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all duration-200 ${
                     selectedCategory === category.id
                       ? 'bg-tangerine text-white'
                       : 'bg-aluminium text-brandGray hover:bg-gray-300'
@@ -71,7 +71,7 @@ function App() {
 
           <div className="grid grid-cols-2 gap-4 max-w-6xl mx-auto">
             {filteredProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-xl shadow-md overflow-hidden border border-aluminium">
+              <div key={product.id} className="bg-white rounded-xl shadow-md overflow-hidden border border-aluminium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] hover:border-tangerine/30">
                 <div className="w-full h-48 bg-gray-100">
                   <img
                     src={product.images[0]}
@@ -81,7 +81,7 @@ function App() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-display text-lg font-semibold text-brandGray mb-1 line-clamp-2">
+                  <h3 className="font-display text-lg font-semibold text-brandGray mb-1 line-clamp-3">
                     {product.name}
                   </h3>
                   <p className="text-sm text-gray-600 mb-2 line-clamp-2">
@@ -95,7 +95,7 @@ function App() {
                   </p>
                   <button
                     onClick={() => addItem(product)}
-                    className="w-full bg-tangerine hover:bg-tangerine-dark text-white font-medium py-2 px-4 rounded-lg transition-colors"
+                    className="w-full bg-tangerine hover:bg-tangerine-dark text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 active:scale-[0.98]"
                   >
                     Узнать цену
                   </button>

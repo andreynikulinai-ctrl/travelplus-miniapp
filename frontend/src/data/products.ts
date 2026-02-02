@@ -2,8 +2,8 @@ import type { Product, Category } from '../types/product';
 
 // Категории каталога Travel+
 export const categories: Category[] = [
-  { id: 'slippers', name: 'Гостиничные тапочки' },
-  { id: 'cosmetics', name: 'Косметика для отелей' },
+  { id: 'slippers', name: 'Тапочки' },
+  { id: 'cosmetics', name: 'Косметика' },
   { id: 'accessories', name: 'Аксессуары' },
 ];
 
@@ -11,7 +11,7 @@ export const products: Product[] = [
   // ——— Гостиничные тапочки ———
   {
     id: '18709',
-    name: 'Тапочки плюш белые стеганые «Люкс»',
+    name: 'Тапочки плюш стеганые «Люкс»',
     description: 'Премиум одноразовые тапочки из плюша с окантовкой для отелей 4–5 звёзд',
     category: 'slippers',
     price: null,
@@ -21,7 +21,7 @@ export const products: Product[] = [
   },
   {
     id: '18878',
-    name: 'Тапочки корал-флис белые «Люкс»',
+    name: 'Тапочки корал-флис «Люкс»',
     description: 'Премиум тапочки из корал-флиса с вязаной окантовкой',
     category: 'slippers',
     price: null,
@@ -51,7 +51,7 @@ export const products: Product[] = [
   },
   {
     id: '16766',
-    name: 'Тапочки стеганый спанбонд белые',
+    name: 'Тапочки стеганый спанбонд',
     description: 'Бизнес-тапочки из стеганого спанбонда, закрытый мыс',
     category: 'slippers',
     price: null,
@@ -61,7 +61,7 @@ export const products: Product[] = [
   },
   {
     id: '23245',
-    name: 'Тапочки УЗО спанбонд белые',
+    name: 'Тапочки УЗО спанбонд',
     description: 'Универсальные закрытые тапочки из спанбонда для отелей и санаториев',
     category: 'slippers',
     price: null,

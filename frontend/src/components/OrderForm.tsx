@@ -69,12 +69,12 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-hidden flex flex-col">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 animate-fade-in">
+      <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-hidden flex flex-col shadow-xl animate-modal-in">
         {/* Шапка */}
         <div className="p-4 border-b flex justify-between items-center">
           <h2 className="font-display text-xl font-bold text-brandGray">Запрос коммерческого предложения</h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-2xl">
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-2xl transition-colors duration-150 p-1 rounded hover:bg-gray-100">
             ×
           </button>
         </div>
@@ -191,13 +191,13 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-150"
             >
               Отмена
             </button>
             <button
               type="submit"
-              className="flex-1 bg-tangerine hover:bg-tangerine-dark text-white font-medium py-2 px-4 rounded-lg transition-colors"
+              className="flex-1 bg-tangerine hover:bg-tangerine-dark text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 active:scale-[0.98]"
             >
               Отправить
             </button>

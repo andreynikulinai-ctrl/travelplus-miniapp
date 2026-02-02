@@ -55,10 +55,10 @@ export default {
         },
       },
       fontFamily: {
-        // Брендбук: AKONY Bold — заголовки, GOLOS — текст и детали
-        // Golos Text в Google Fonts; Akony подключается отдельно при наличии файлов
+        // Akony — только для «Трэвел+» в шапке (класс font-akony). Остальное — Golos Text.
         sans: ['Golos Text', 'system-ui', 'sans-serif'],
         display: ['Golos Text', 'system-ui', 'sans-serif'],
+        akony: ['Akony', 'Akony Bold', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         // Соотношения из брендбука (база текст = 1rem)
@@ -68,6 +68,20 @@ export default {
         'brand-text': ['1rem', { lineHeight: '1.5', fontWeight: '400' }],          // 16px
         'brand-detail': ['1rem', { lineHeight: '1.5', fontWeight: '500' }],        // детали 1 = текст
         'brand-detail-2': ['1.2rem', { lineHeight: '1.4', fontWeight: '500' }],    // детали 2
+      },
+      keyframes: {
+        'modal-in': {
+          '0%': { opacity: '0', transform: 'scale(0.96) translateY(12px)' },
+          '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+        },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      animation: {
+        'modal-in': 'modal-in 0.25s ease-out',
+        'fade-in': 'fade-in 0.2s ease-out',
       },
     },
   },

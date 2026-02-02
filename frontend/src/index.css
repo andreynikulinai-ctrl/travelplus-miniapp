@@ -1,4 +1,20 @@
-/* Брендбук: GOLOS — основной текст и детали; AKONY Bold — заголовки (подключить отдельно при наличии) */
+/* Брендбук: AKONY Bold — заголовки; GOLOS — основной текст и детали.
+   Шрифт лежит в public/fonts/ — запрос будет виден в Network как /fonts/akony-bold.otf */
+@font-face {
+  font-family: 'Akony';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/akony-bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Akony Bold';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/akony-bold.otf') format('opentype');
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap');
 
 @tailwind base;
