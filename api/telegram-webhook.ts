@@ -6,7 +6,8 @@
 const WELCOME_TEXT =
   "Привет! Это поддержка Трэвел+ 📣\n\nМы всегда на связи и готовы ответить на любые вопросы по нашей продукции.\n\nБудем рады помочь 🧡";
 
-const HINT_TEXT = "Чтобы использовать бота, нажмите здесь ⬇️";
+const AFTER_START_TEXT =
+  "Не забудь открыть наше мини-приложение «Каталог». В нём можно наглядно посмотреть продукцию и быстро запросить индивидуальное коммерческое предложение по интересующим категориям товаров 😉";
 
 function replyMarkupStart() {
   return {
@@ -70,7 +71,7 @@ export default async function handler(req: any, res: any) {
   if (isStart) {
     try {
       await sendMessage(token, chatId, WELCOME_TEXT);
-      await sendMessage(token, chatId, HINT_TEXT, replyMarkupStart());
+      await sendMessage(token, chatId, AFTER_START_TEXT, replyMarkupStart());
     } catch (e) {
       console.error("telegram-webhook sendMessage:", e);
       return res.status(500).json({ error: "Send failed" });
