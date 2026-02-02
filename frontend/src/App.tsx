@@ -10,9 +10,10 @@ function App() {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('all')
 
-  const filteredProducts = selectedCategory === 'all'
-    ? products
-    : products.filter(p => p.category === selectedCategory)
+  const showSlipperCards = selectedCategory === 'all' || selectedCategory === 'slippers'
+  const filteredProducts = showSlipperCards
+    ? products.filter(p => p.category === 'slippers')
+    : []
 
   return (
     <>
@@ -69,40 +70,52 @@ function App() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 max-w-6xl mx-auto">
-            {filteredProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-xl shadow-md overflow-hidden border border-aluminium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] hover:border-tangerine/30">
-                <div className="w-full h-48 bg-gray-100">
-                  <img
-                    src={product.images[0]}
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
-                  />
+          {showSlipperCards ? (
+            <div className="grid grid-cols-2 gap-4 max-w-6xl mx-auto">
+              {filteredProducts.map((product) => (
+                <div key={product.id} className="bg-white rounded-xl shadow-md overflow-hidden border border-aluminium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] hover:border-tangerine/30">
+                  <div className="w-full h-48 bg-gray-100">
+                    <img
+                      src={product.images[0]}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-display text-lg font-semibold text-brandGray mb-1 line-clamp-3">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+                      {product.description}
+                    </p>
+                    <p className="text-xs text-gray-500 mb-3">
+                      {product.packaging}
+                    </p>
+                    <p className="text-base font-medium text-gray-700 mb-4">
+                      Цена по запросу
+                    </p>
+                    <button
+                      onClick={() => addItem(product)}
+                      className="w-full bg-tangerine hover:bg-tangerine-dark text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 active:scale-[0.98]"
+                    >
+                      Узнать цену
+                    </button>
+                  </div>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-display text-lg font-semibold text-brandGray mb-1 line-clamp-3">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-2 line-clamp-2">
-                    {product.description}
-                  </p>
-                  <p className="text-xs text-gray-500 mb-3">
-                    {product.packaging}
-                  </p>
-                  <p className="text-base font-medium text-gray-700 mb-4">
-                    Цена по запросу
-                  </p>
-                  <button
-                    onClick={() => addItem(product)}
-                    className="w-full bg-tangerine hover:bg-tangerine-dark text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 active:scale-[0.98]"
-                  >
-                    Узнать цену
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-xl border border-aluminium shadow-sm text-center">
+              <p className="text-4xl mb-4" aria-hidden="true">📦</p>
+              <h3 className="font-display text-lg font-semibold text-brandGray mb-2">
+                Раздел обновляется
+              </h3>
+              <p className="text-sm text-brandGray/90">
+                Каталог в этой категории пополняется. Товары скоро появятся — следите за обновлениями.
+              </p>
+            </div>
+          )}
         </main>
       </div>
 

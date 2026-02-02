@@ -180,8 +180,8 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
                 onChange={(e) => setFormData({ ...formData, agreedToPolicy: e.target.checked })}
                 className="mt-1 mr-2"
               />
-              <label htmlFor="policy" className="text-sm text-gray-600">
-                Согласен на обработку персональных данных *
+              <label htmlFor="policy" className="text-sm text-gray-600 whitespace-nowrap">
+                Согласие на обработку персональных данных *
               </label>
             </div>
           </div>
