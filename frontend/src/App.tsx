@@ -74,13 +74,29 @@ function App() {
             <div className="grid grid-cols-2 gap-4 max-w-6xl mx-auto">
               {filteredProducts.map((product) => (
                 <div key={product.id} className="bg-white rounded-xl shadow-md overflow-hidden border border-aluminium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] hover:border-tangerine/30">
-                  <div className="w-full h-48 bg-gray-100">
-                    <img
-                      src={product.images[0]}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                      onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
-                    />
+                  <div className="w-full h-48 bg-aluminium/40">
+                    {product.id === '18709' ? (
+                      <img
+                        src={product.images[0]}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center text-center px-4 bg-aluminium/30">
+                        <div className="w-24 h-24 rounded-full overflow-hidden bg-tangerine flex items-center justify-center shrink-0 p-1">
+                          <img
+                            src="/slippers-icon.png"
+                            alt=""
+                            className="w-full h-full object-contain icon-tangerine-fill"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <p className="mt-2 text-sm font-medium text-brandGray">
+                          Фото скоро появится
+                        </p>
+                      </div>
+                    )}
                   </div>
                   <div className="p-4">
                     <h3 className="font-display text-lg font-semibold text-brandGray mb-1 line-clamp-3">
