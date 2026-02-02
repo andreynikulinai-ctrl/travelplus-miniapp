@@ -172,16 +172,25 @@ export const OrderForm = ({ isOpen, onClose }: OrderFormProps) => {
             </div>
 
             {/* Согласие */}
-            <div className="flex items-start">
+            <div className="flex items-start gap-2">
               <input
                 type="checkbox"
                 id="policy"
                 checked={formData.agreedToPolicy}
                 onChange={(e) => setFormData({ ...formData, agreedToPolicy: e.target.checked })}
-                className="mt-1 mr-2"
+                className="mt-1 shrink-0"
               />
-              <label htmlFor="policy" className="text-sm text-gray-600 whitespace-nowrap">
-                Согласие на обработку персональных данных *
+              <label htmlFor="policy" className="text-sm text-gray-600">
+                <span className="whitespace-nowrap">Согласие на обработку персональных данных *</span>
+                {' '}
+                <a
+                  href="/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-tangerine hover:underline"
+                >
+                  Политика конфиденциальности
+                </a>
               </label>
             </div>
           </div>
