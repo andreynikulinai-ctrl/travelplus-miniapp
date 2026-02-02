@@ -7,6 +7,9 @@
     },
     "api/post-channel-message.ts": {
       "includeFiles": "api/**"
+    },
+    "api/telegram-webhook.ts": {
+      "includeFiles": "api/**"
     }
   },
   "headers": [
